@@ -1,0 +1,1097 @@
+<title>Magdiel Angel Galván</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Página personal de Magdiel Joshua Angel Galván: física computacional, redes neuronales informadas por la física (PINNs) y ciencia de datos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+
+<style>
+/* Layout: índice fijo a la izquierda + una sola columna editorial.
+   Paleta: papel grafito frío y tinta, con acento cobre quemado y secundario petróleo. */
+:root{
+  --bg:#EEF1F6;
+  --band:#E4E9F1;
+  --surface:#FFFFFF;
+  --ink:#0F141D;
+  --muted:#58637A;
+  --line:#D2D9E6;
+  --accent:#B44A1C;
+  --accent-soft:#F6E5DC;
+  --teal:#0F6B62;
+  --brass:#8A6A17;
+  --shadow:0 1px 2px rgba(15,20,29,.05), 0 12px 32px -18px rgba(15,20,29,.35);
+  --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B0F16;
+    --band:#0F1520;
+    --surface:#141B26;
+    --ink:#E9EEF7;
+    --muted:#95A3BA;
+    --line:#212B3A;
+    --accent:#E8793F;
+    --accent-soft:#2A1A12;
+    --teal:#48BBA9;
+    --brass:#D9B45E;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -22px rgba(0,0,0,.9);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B0F16;
+  --band:#0F1520;
+  --surface:#141B26;
+  --ink:#E9EEF7;
+  --muted:#95A3BA;
+  --line:#212B3A;
+  --accent:#E8793F;
+  --accent-soft:#2A1A12;
+  --teal:#48BBA9;
+  --brass:#D9B45E;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -22px rgba(0,0,0,.9);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.65;
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0 0 auto;
+  height:env(safe-area-inset-top, 0px);
+  z-index:40;
+  background:var(--band);
+}
+.wrap{
+  width:100%;
+  max-width:1180px;
+  margin-inline:auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+h1,h2,h3,h4{font-family:var(--sans);font-weight:700;text-wrap:balance;margin:0;letter-spacing:-.02em;line-height:1.15}
+p{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* ---------- barra superior ---------- */
+.topbar{
+  position:sticky;
+  top:env(safe-area-inset-top, 0px);
+  z-index:30;
+  background:color-mix(in srgb, var(--band) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .wrap{
+  display:flex;align-items:center;gap:16px;
+  padding-block:10px;
+  min-height:56px;
+}
+.brand{
+  font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:-.01em;
+  text-decoration:none;white-space:nowrap;
+}
+.brand span{color:var(--accent)}
+.topbar-space{flex:1 1 auto;min-width:0}
+.ctrls{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.seg{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.seg button{
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  background:transparent;border:0;color:var(--muted);
+  padding:6px 10px;cursor:pointer;
+}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.icon-btn{
+  width:34px;height:34px;display:grid;place-items:center;
+  border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  color:var(--muted);cursor:pointer;
+}
+.icon-btn:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ---------- héroe ---------- */
+.hero{position:relative;overflow:hidden;background:var(--band);border-bottom:1px solid var(--line)}
+#field{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(40px,7vw,76px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:clamp(24px,5vw,56px);align-items:center}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:18px;
+}
+.eyebrow::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
+.hero h1{font-size:clamp(34px,6.2vw,62px);font-weight:800;letter-spacing:-.035em}
+.hero .lede{
+  font-size:clamp(17px,2.2vw,20px);color:var(--muted);margin-top:18px;max-width:60ch;
+}
+.hero .lede b{color:var(--ink);font-weight:600}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.pill{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;
+  border:1px solid var(--line);background:var(--surface);
+  padding:6px 11px;border-radius:999px;color:var(--muted);
+}
+.pill.award{border-color:var(--brass);color:var(--brass)}
+.pill.live{border-color:var(--teal);color:var(--teal)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{
+  font-family:var(--sans);font-size:14px;font-weight:600;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 16px;border-radius:999px;text-decoration:none;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  transition:transform .15s ease, border-color .15s ease;
+}
+.btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn svg{width:16px;height:16px;flex:0 0 auto}
+.portrait{
+  position:relative;border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow);background:#000;
+}
+.portrait img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.92) contrast(1.04)}
+.portrait::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(170deg,transparent 55%,color-mix(in srgb,var(--accent) 28%, transparent));
+  mix-blend-mode:multiply;
+}
+.portrait-cap{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-top:10px;text-align:right;
+}
+
+/* ---------- estructura ---------- */
+.shell{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(24px,4vw,64px);padding-block:clamp(32px,5vw,56px)}
+.rail{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 76px);align-self:start;max-height:80vh;overflow:auto}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--line)}
+.rail a{
+  display:block;text-decoration:none;color:var(--muted);
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;
+  padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;
+}
+.rail a:hover{color:var(--ink)}
+.rail a.active{color:var(--accent);border-left-color:var(--accent)}
+.rail .rail-note{font-family:var(--mono);font-size:10.5px;color:var(--muted);padding:16px 0 0 14px;line-height:1.5}
+
+main{min-width:0;display:flex;flex-direction:column;gap:clamp(48px,7vw,84px)}
+section{scroll-margin-top:calc(env(safe-area-inset-top, 0px) + 84px)}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(23px,3.4vw,30px)}
+.sec-tag{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+.sec-rule{height:1px;background:var(--line);flex:1 1 60px;min-width:30px}
+.prose p + p{margin-top:16px}
+.prose{max-width:66ch}
+
+/* ---------- tarjetas ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:20px 22px;box-shadow:var(--shadow);
+}
+.grid{display:grid;gap:16px}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.grid.three{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card h3{font-size:17px;margin-bottom:6px}
+.card p{font-size:15.5px;color:var(--muted);line-height:1.6}
+.meta{
+  font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted);
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+}
+.status{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 9px;border-radius:999px;border:1px solid currentColor;flex:0 0 auto;
+}
+.status.work{color:var(--teal)}
+.status.review{color:var(--accent)}
+.status.done{color:var(--brass)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{
+  font-family:var(--mono);font-size:10.5px;color:var(--muted);
+  border:1px solid var(--line);border-radius:5px;padding:3px 7px;
+}
+.link{
+  font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--accent);
+  text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+}
+.link:hover{text-decoration:underline}
+.link svg{width:13px;height:13px}
+.card-links{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px}
+
+/* investigación */
+.research{display:flex;flex-direction:column;gap:14px}
+.rcard{
+  display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;align-items:start;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:20px 22px;box-shadow:var(--shadow);
+}
+.glyph{
+  width:52px;height:52px;border-radius:10px;border:1px solid var(--line);
+  background:var(--accent-soft);display:grid;place-items:center;color:var(--accent);
+}
+.glyph svg{width:26px;height:26px}
+.rcard .top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.rcard p{margin-top:8px}
+
+/* tesis */
+.thesis{
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);
+  box-shadow:var(--shadow);
+}
+.thesis-top{padding:24px;border-bottom:1px solid var(--line);background:var(--accent-soft)}
+.thesis-top h3{font-size:clamp(18px,2.6vw,23px);line-height:1.3;max-width:48ch}
+.thesis-body{padding:24px;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:28px}
+.thesis-body p{font-size:16px;line-height:1.72}
+.facts{display:flex;flex-direction:column;gap:12px;border-left:1px solid var(--line);padding-left:20px}
+.fact dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.fact dd{margin:3px 0 0;font-family:var(--sans);font-size:14px;font-weight:600}
+
+/* publicaciones */
+.pub{display:grid;grid-template-columns:76px minmax(0,1fr);gap:18px;padding:20px 0;border-top:1px solid var(--line)}
+.pub:last-child{border-bottom:1px solid var(--line)}
+.pub .year{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:3px}
+.pub h3{font-size:16.5px;line-height:1.4}
+.pub .authors{font-size:14.5px;color:var(--muted);margin-top:6px}
+.pub .authors b{color:var(--ink);font-weight:600}
+.pub .venue{font-size:14.5px;color:var(--muted);margin-top:4px}
+
+/* experiencia */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl{display:grid;grid-template-columns:116px minmax(0,1fr);gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.tl:last-child{border-bottom:1px solid var(--line)}
+.tl .when{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding-top:4px;letter-spacing:.02em}
+.tl h3{font-size:17px}
+.tl .org{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--accent);margin-top:3px}
+.tl ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15.5px;line-height:1.6}
+.tl li{margin-bottom:6px}
+.tl li::marker{color:var(--accent)}
+
+/* habilidades */
+.skills{display:grid;gap:18px}
+.skillrow{display:grid;grid-template-columns:168px minmax(0,1fr);gap:18px;align-items:start}
+.skillrow h3{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;padding-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  font-family:var(--sans);font-size:13px;font-weight:500;
+  border:1px solid var(--line);background:var(--surface);border-radius:7px;padding:5px 10px;
+}
+
+/* contacto */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.cline{display:flex;flex-direction:column;gap:4px}
+.cline .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cline .v{font-family:var(--sans);font-size:15px;font-weight:600;word-break:break-word}
+.copy{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  border:1px solid var(--line);background:transparent;color:var(--muted);
+  border-radius:6px;padding:3px 8px;cursor:pointer;margin-left:8px;
+}
+.copy:hover{color:var(--accent);border-color:var(--accent)}
+
+footer{border-top:1px solid var(--line);background:var(--band)}
+footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.03em}
+
+[data-reveal].armed{opacity:.001;transform:translateY(14px)}
+[data-reveal]{transition:opacity .55s ease, transform .55s cubic-bezier(.2,.7,.3,1)}
+@media (prefers-reduced-motion:reduce){
+  [data-reveal],[data-reveal].armed{opacity:1!important;transform:none!important;transition:none}
+  .btn{transition:none}
+}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .rail{display:none}
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .portrait{max-width:220px}
+  .thesis-body{grid-template-columns:minmax(0,1fr)}
+  .facts{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:18px}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .skillrow{grid-template-columns:minmax(0,1fr);gap:8px}
+  .tl,.pub{grid-template-columns:minmax(0,1fr);gap:8px}
+  .rcard{grid-template-columns:minmax(0,1fr)}
+  .glyph{width:44px;height:44px}
+  .brand{font-size:13px}
+}
+</style>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#inicio">MAGDIEL ANGEL <span>GALVÁN</span></a>
+    <div class="topbar-space"></div>
+    <div class="ctrls">
+      <div class="seg" role="group" aria-label="Idioma / Language">
+        <button type="button" id="lang-es" aria-pressed="true">ES</button>
+        <button type="button" id="lang-en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="icon-btn" id="theme-btn" aria-label="Cambiar tema" title="Tema claro / oscuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" width="17" height="17" aria-hidden="true"><path d="M20 13.5A8 8 0 0 1 10.5 4a8.2 8.2 0 0 0 0 16 8 8 0 0 0 9.5-6.5Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow"><span data-en="Physicist · UNAM · Computational modelling">Físico · UNAM · Modelado computacional</span></p>
+        <h1>Magdiel Joshua<br>Angel Galván</h1>
+        <p class="lede">
+          <span data-en="I work where differential equations meet machine learning: "><b>Trabajo en la frontera entre las ecuaciones diferenciales y el aprendizaje automático:</b></span>
+          <span data-en="physics-informed neural networks, pseudo-spectral solvers and data science applied to health and retail.">redes neuronales informadas por la física, solucionadores pseudo-espectrales y ciencia de datos aplicada a salud y retail.</span>
+        </p>
+        <div class="pills">
+          <span class="pill" data-en="BSc in Physics, UNAM — degree conferred">Licenciatura en Física, UNAM — titulado</span>
+          <span class="pill live" data-en="Data Analyst · Orion Innovation × El Palacio de Hierro">Analista de datos · Orion Innovation × El Palacio de Hierro</span>
+          <span class="pill award" data-en="Awarded poster · XXXIV DGFM–SMF Meeting 2026">Póster galardonado · XXXIV Reunión DGFM–SMF 2026</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="docs/cv-magdiel-angel-galvan.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            <span data-en="Curriculum vitae (PDF)">Curriculum vitae (PDF)</span>
+          </a>
+          <a class="btn" href="https://github.com/magdielzz" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.36 1.08 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.86l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/magdiel-joshua-angel-galvan-991664345" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.46-2.2 2.96V21h-4z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span data-en="Contact">Contacto</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <figure class="portrait" style="margin:0">
+          <img src="assets/magdiel-angel.jpg" alt="Retrato de Magdiel Joshua Angel Galván" width="900" height="1200">
+        </figure>
+        <p class="portrait-cap" data-en="Mexico City · 2026">Ciudad de México · 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap shell">
+  <nav class="rail" aria-label="Índice">
+    <ol>
+      <li><a href="#perfil" data-en="Profile">Perfil</a></li>
+      <li><a href="#investigacion" data-en="Research">Investigación</a></li>
+      <li><a href="#tesis" data-en="Thesis">Tesis</a></li>
+      <li><a href="#publicaciones" data-en="Papers">Publicaciones</a></li>
+      <li><a href="#proyectos" data-en="Code">Proyectos</a></li>
+      <li><a href="#experiencia" data-en="Experience">Experiencia</a></li>
+      <li><a href="#congresos" data-en="Conferences">Congresos</a></li>
+      <li><a href="#formacion" data-en="Education">Formación</a></li>
+      <li><a href="#habilidades" data-en="Skills">Habilidades</a></li>
+      <li><a href="#contacto" data-en="Contact">Contacto</a></li>
+    </ol>
+    <p class="rail-note" data-en="Last updated November 2026">Actualizado en noviembre de 2026</p>
+  </nav>
+
+  <main>
+
+    <section id="perfil" data-reveal>
+      <div class="sec-head">
+        <span class="sec-tag" data-en="Profile">Perfil</span>
+        <h2 data-en="Physics as a method, data as the material">La física como método, los datos como materia</h2>
+        <span class="sec-rule"></span>
+      </div>
+      <div class="prose">
+        <p data-en="I am a physicist from the Facultad de Ciencias at UNAM, specialised in computational modelling and data science. My research line is physics-informed neural networks (PINNs): neural networks that carry the governing equation inside their loss function, so the learned solution obeys the physics and not only the data. My undergraduate thesis studies them in the hardest regime for this family of methods — long-time multi-periodic dynamics in nonlinear differential equations.">Soy físico por la Facultad de Ciencias de la UNAM, especializado en modelado computacional y ciencia de datos. Mi línea de investigación son las redes neuronales informadas por la física (PINNs): redes que llevan la ecuación que gobierna al sistema dentro de su función de pérdida, de modo que la solución aprendida obedece a la física y no solo a los datos. Mi tesis de licenciatura las estudia en el régimen más exigente para esta familia de métodos: la dinámica multiperiódica de largo tiempo en ecuaciones diferenciales no lineales.</p>
+        <p data-en="In parallel I build numerical software: a pseudo-spectral solver for the 2D/3D Navier–Stokes equations in vorticity form, with parallelised Fourier transforms, and convolutional models for galaxy morphology. The training runs live on the computing cluster of UNAM's Institute for Nuclear Sciences.">En paralelo construyo software numérico: un solucionador pseudo-espectral de las ecuaciones de Navier–Stokes en formulación de vorticidad en 2D y 3D, con transformadas de Fourier paralelizadas, y modelos convolucionales para morfología de galaxias. Los entrenamientos corren en el clúster de cómputo del Instituto de Ciencias Nucleares de la UNAM.</p>
+        <p data-en="That same toolkit is what I apply in industry. Today I am a Business Specialist Data Analyst at Orion Innovation, working on the El Palacio de Hierro account: clustering, forecasting, a product-to-store allocation model, Tableau and Looker dashboards, and analytical pipelines automated with Python, Docker and the cloud. Before that I was a data analyst at Publicis Groupe. I also taught Data Science and AI at UNAM for two consecutive semesters.">Ese mismo instrumental es el que aplico en la industria. Hoy soy Business Specialist Analyst Data en Orion Innovation, en la cuenta de El Palacio de Hierro: clustering, forecasting, un modelo de asignación de producto a tienda, tableros en Tableau y Looker, y procesos analíticos automatizados con Python, Docker y servicios en la nube. Antes fui analista de datos en Publicis Groupe. También fui ayudante de profesor de Ciencia de Datos e Inteligencia Artificial en la UNAM durante dos semestres consecutivos.</p>
+      </div>
+    </section>
+
+    <section id="investigacion" data-reveal>
+      <div class="sec-head">
+        <span class="sec-tag" data-en="Research">Investigación</span>
+        <h2 data-en="Research lines">Líneas de trabajo</h2>
+        <span class="sec-rule"></span>
+      </div>
+      <div class="research">
+
+        <article class="rcard">
+          <div class="glyph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="19" cy="17" r="2"/><path d="M7 7l3 4M7 17l3-4M14 11l3-3M14 13l3 3"/></svg>
+          </div>
+          <div>
+            <div class="top">
+              <h3 data-en="Physics-informed neural networks for long-time dynamics">Redes neuronales informadas por la física para dinámica de largo tiempo</h3>
+              <span class="status review" data-en="Manuscript in preparation">Manuscrito en preparación</span>
+            </div>
+            <p data-en="How the architecture, the sampling of collocation points and the weighting between the equation residual and the initial conditions govern whether a PINN keeps the multi-periodic structure of a nonlinear system over long horizons — or loses its characteristic frequencies. Subject of my undergraduate thesis, presented as a poster at two DGFM–SMF meetings.">Cómo la arquitectura, el muestreo de puntos de colocación y el peso relativo entre el residual de la ecuación y las condiciones iniciales determinan que una PINN conserve la estructura multiperiódica de un sistema no lineal en horizontes largos, o pierda sus frecuencias características. Tema de mi tesis de licenciatura, presentado como cartel en dos reuniones de la DGFM–SMF.</p>
+            <div class="tags"><span class="tag">PINNs</span><span class="tag">TensorFlow</span><span class="tag">EDO/EDP no lineales</span><span class="tag">Clúster ICN · Linux</span></div>
+            <div class="card-links"><a class="link" href="https://github.com/magdielzz/PINNs" target="_blank" rel="noopener" data-en="Repository ↗">Repositorio ↗</a><a class="link" href="#tesis" data-en="Read the abstract">Leer el resumen</a></div>
+          </div>
+        </article>
+
+        <article class="rcard">
+          <div class="glyph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 12c3-6 6 6 9 0s6-6 9 0"/><path d="M3 18c3-4 6 4 9 0s6-4 9 0"/><path d="M3 6c3-4 6 4 9 0s6-4 9 0"/></svg>
+          </div>
+          <div>
+            <div class="top">
+              <h3 data-en="Pseudo-spectral Navier–Stokes solver in vorticity form">Solucionador pseudo-espectral de Navier–Stokes en vorticidad</h3>
+              <span class="status work" data-en="Open code">Código abierto</span>
+            </div>
+            <p data-en="A 2D/3D solver for the incompressible Navier–Stokes equations written in vorticity–stream function formulation with a pseudo-spectral method, implemented in Python with NumPy and SciPy and accelerated by parallelising the Fourier transforms.">Solucionador en 2D y 3D de las ecuaciones de Navier–Stokes incompresibles en formulación vorticidad–función de corriente mediante un método pseudo-espectral, implementado en Python con NumPy y SciPy y acelerado al paralelizar las transformadas de Fourier.</p>
+            <div class="tags"><span class="tag">Métodos espectrales</span><span class="tag">FFT</span><span class="tag">Cómputo paralelo</span><span class="tag">NumPy · SciPy</span></div>
+            <div class="card-links"><a class="link" href="https://github.com/magdielzz/Navier-Stokes-Parallel-Solver" target="_blank" rel="noopener" data-en="Repository ↗">Repositorio ↗</a></div>
+          </div>
+        </article>
+
+        <article class="rcard">
+          <div class="glyph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(-25 12 12)"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/><circle cx="19" cy="6" r="1"/><circle cx="5" cy="18" r="1"/></svg>
+          </div>
+          <div>
+            <div class="top">
+              <h3 data-en="Galaxy classification with and without tidal structures">Clasificación de galaxias con y sin estructuras de marea</h3>
+              <span class="status work" data-en="Active">En desarrollo</span>
+            </div>
+            <p data-en="Convolutional neural networks trained to tell apart galaxies that show tidal features from those that do not — a morphology problem where the signal is faint, diffuse and easily confused with image artefacts.">Redes neuronales convolucionales entrenadas para distinguir galaxias que presentan estructuras de marea de las que no las presentan: un problema de morfología donde la señal es tenue, difusa y fácil de confundir con artefactos de imagen.</p>
+            <div class="tags"><span class="tag">CNN</span><span class="tag">Visión computacional</span><span class="tag">Astrofísica</span><span class="tag">Keras</span></div>
+            <div class="card-links"><a class="link" href="https://github.com/magdielzz/Clasificaci-n-de-galaxias-con-estructura-de-marea-y-sin-estructura-de-marea" target="_blank" rel="noopener" data-en="Repository ↗">Repositorio ↗</a></div>
+          </div>
+        </article>
+
+        <article class="rcard">
+          <div class="glyph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 20h18"/><rect x="4" y="11" width="3.4" height="9"/><rect x="10.3" y="6" width="3.4" height="14"/><rect x="16.6" y="14" width="3.4" height="6"/><path d="M4 4h4"/></svg>
+          </div>
+          <div>
+            <div class="top">
+              <h3 data-en="Data science for health: prolonged hospital stays in Mexico">Ciencia de datos en salud: estancias hospitalarias prolongadas en México</h3>
+              <span class="status review" data-en="Submitted to journal">En envío a revista</span>
+            </div>
+            <p data-en="Length of stay (LOS) read as an indicator of delays in diagnosis and treatment across the Mexican hospital system. Presented as a free paper at the 2nd Congress on Science, Technology and Outreach at Hospital General de México, and currently being submitted to a journal.">La duración de la estancia hospitalaria (LOS) leída como indicador de retrasos en el diagnóstico y el tratamiento dentro del sistema hospitalario mexicano. Presentado como trabajo libre en el 2° Congreso de Ciencia, Tecnología y Vinculación del Hospital General de México y actualmente en proceso de envío a revista.</p>
+            <div class="tags"><span class="tag">EDA</span><span class="tag">Modelos estadísticos</span><span class="tag">Salud pública</span><span class="tag">Python</span></div>
+            <div class="card-links"><a class="link" href="https://github.com/magdielzz/Proyecto-ciencia-de-Datos-Biomedicina" target="_blank" rel="noopener" data-en="Repository ↗">Repositorio ↗</a><a class="link" href="docs/constancia-congreso-salud-2026.pdf" target="_blank" rel="noopener" data-en="Conference certificate (PDF)">Constancia del congreso (PDF)</a></div>
+          </div>
+        </article>
+
+        <article class="rcard">
+          <div class="glyph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 17l5-5 4 3 7-8"/><path d="M15 7h5v5"/><circle cx="8" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="15" r="1.3" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <div>
+            <div class="top">
+              <h3 data-en="Applied analytics for retail">Analítica aplicada al retail</h3>
+              <span class="status done" data-en="In production">En producción</span>
+            </div>
+            <p data-en="Clustering, forecasting and curve analysis on consumption data, plus a product-to-store allocation model that weighs several factors at once to raise sales, reduce stagnant inventory and cut SKU stock-outs at the highest-demand points of sale. Work carried out at Orion Innovation for El Palacio de Hierro.">Clustering, forecasting y análisis de curvas sobre datos de consumo, y un modelo de asignación de producto a tienda que pondera varios factores a la vez para elevar la venta, reducir inventario estancado y mitigar faltantes de SKU en los puntos de venta de mayor demanda. Trabajo realizado en Orion Innovation para El Palacio de Hierro.</p>
+            <div class="tags"><span class="tag">Clustering</span><span class="tag">Forecasting</span><span class="tag">Tableau · Looker</span><span class="tag">AWS · Docker</span></div>
+            <div class="card-links"><a class="link" href="https://www.acreditta.com/credential/d39ebec4-7592-4351-9e7c-9a6155a5eda8?utm_source=copy&amp;resource_type=badge&amp;resource=d39ebec4-7592-4351-9e7c-9a6155a5eda8" target="_blank" rel="noopener" data-en="Verified credential ↗">Credencial verificada ↗</a></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="tesis" data-reveal>
+      <div class="sec-head">
+        <span class="sec-tag" data-en="Thesis">Tesis</span>
+        <h2 data-en="Undergraduate thesis in Physics">Tesis de licenciatura en Física</h2>
+        <span class="sec-rule"></span>
+      </div>
+      <div class="thesis">
+        <div class="thesis-top">
+          <p class="meta" style="margin-bottom:10px"><span data-en="Facultad de Ciencias, UNAM · 2026">Facultad de Ciencias, UNAM · 2026</span></p>
+          <h3 data-en="A study of physics-informed neural networks for long-time multi-periodic dynamics in nonlinear differential equations">Estudio de redes neuronales informadas por la física para la dinámica multiperiódica de largo tiempo en ecuaciones diferenciales no lineales</h3>
+        </div>
+        <div class="thesis-body">
+          <div>
+            <p class="meta" style="margin-bottom:12px"><span data-en="Abstract">Resumen</span></p>
+            <p data-en="Physics-informed neural networks (PINNs) place the differential equation that governs a system inside the loss function, so that the learned solution satisfies the physics of the problem and not only the available data. This thesis studies their behaviour in a particularly demanding regime: long-time multi-periodic dynamics in nonlinear differential equations, where the approximation error tends to accumulate as the time horizon grows and the network loses the characteristic frequencies of the system. The work sets out the training problem for this regime and analyses how the choice of architecture, the sampling of collocation points and the relative weighting between the equation residual and the initial conditions affect the stability of the solution at long times, comparing the result against reference numerical integrators. The experiments were run on the computing cluster of UNAM's Institute for Nuclear Sciences. The outcome is a characterisation of the conditions under which a PINN reliably reproduces the multi-periodic structure of the system, and of the mechanisms that degrade it.">Las redes neuronales informadas por la física (PINNs) incorporan la ecuación diferencial que gobierna a un sistema dentro de la función de pérdida, de modo que la solución aprendida satisface la física del problema y no únicamente los datos disponibles. Esta tesis estudia su comportamiento en un régimen especialmente exigente: la dinámica multiperiódica de largo tiempo en ecuaciones diferenciales no lineales, donde el error de aproximación tiende a acumularse conforme crece el horizonte temporal y la red pierde las frecuencias características del sistema. El trabajo plantea el problema de entrenamiento para este régimen y analiza cómo la elección de la arquitectura, el muestreo de los puntos de colocación y el peso relativo entre el residual de la ecuación y las condiciones iniciales afectan la estabilidad de la solución a tiempos largos, contrastando el resultado con integradores numéricos de referencia. Los experimentos se ejecutaron en el clúster de cómputo del Instituto de Ciencias Nucleares de la UNAM. El resultado es una caracterización de las condiciones bajo las cuales una PINN reproduce de forma confiable la estructura multiperiódica del sistema y de los mecanismos que la degradan.</p>
+          </div>
+          <dl class="facts" style="margin:0">
+            <div class="fact"><dt data-en="Degree">Grado</dt><dd data-en="BSc in Physics — conferred">Licenciatura en Física — titulado</dd></div>
+            <div class="fact"><dt data-en="Institution">Institución</dt><dd>Facultad de Ciencias, UNAM</dd></div>
+            <div class="fact"><dt data-en="Computing">Cómputo</dt><dd data-en="ICN-UNAM cluster · Linux · HPC">Clúster del ICN-UNAM · Linux · HPC</dd></div>
+            <div class="fact"><dt data-en="Presented at">Presentada en</dt><dd data-en="XXXIV DGFM–SMF Meeting · XVI DGFM Workshop">XXXIV Reunión DGFM–SMF · XVI Taller DGFM</dd></div>
+            <div class="fact"><dt data-en="Code">Código</dt><dd><a class="link" href="https://github.com/magdielzz/PINNs" target="_blank" rel="noopener">github.com/magdielzz/PINNs</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="publicaciones" data-reveal>
+      <div class="sec-head">
+        <span class="sec-tag" data-en="Papers">Publicaciones</span>
+        <h2 data-en="Papers and manuscripts">Artículos y manuscritos</h2>
+        <span class="sec-rule"></span>
+      </div>
+      <p class="prose" style="color:var(--muted);font-size:15.5px;margin-bottom:8px" data-en="Work in progress toward journal publication. Each entry links to the code and data that support it.">Trabajo en curso hacia su publicación en revista. Cada entrada enlaza al código y los datos que la sustentan.</p>
+
+      <article class="pub">
+        <div class="year">2026</div>
+        <div>
+          <div class="top" style="display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;align-items:flex-start">
+            <h3 data-en="Analysis of prolonged hospital stays in Mexico with data science">Análisis de estancias hospitalarias prolongadas para México con ciencia de datos</h3>
+            <span class="status review" data-en="Submitted to journal">En envío a revista</span>
+          </div>
+          <p class="authors"><b>M. J. Angel Galván</b>, D. A. García Espinosa</p>
+          <p class="venue" data-en="Presented as a free paper at the 2nd Congress on Science, Technology and Outreach: Innovation for Health, Hospital General de México «Dr. Eduardo Liceaga», 11–13 March 2026.">Presentado como trabajo libre en el 2° Congreso de Ciencia, Tecnología y Vinculación: Innovación para la Salud, Hospital General de México «Dr. Eduardo Liceaga», 11–13 de marzo de 2026.</p>
+          <div class="card-links">
+            <a class="link" href="https://github.com/magdielzz/Proyecto-ciencia-de-Datos-Biomedicina" target="_blank" rel="noopener" data-en="Code and analysis ↗">Código y análisis ↗</a>
+            <a class="link" href="docs/constancia-congreso-salud-2026.pdf" target="_blank" rel="noopener" data-en="Certificate (PDF)">Constancia (PDF)</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="year">2026</div>
+        <div>
+          <div class="top" style="display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;align-items:flex-start">
+            <h3 data-en="A study of physics-informed neural networks for multi-periodic dynamics in nonlinear differential equations">Estudio de redes neuronales informadas por la física para la dinámica multi-periódica en ecuaciones diferenciales no lineales</h3>
+            <span class="status review" data-en="In preparation">En preparación</span>
+          </div>
+          <p class="authors"><b>M. J. Angel Galván</b></p>
+          <p class="venue" data-en="Poster at the XXXIV Annual Meeting of the Gravitation and Mathematical Physics Division, Mexican Physical Society (selected among the best research posters), and at the XVI DGFM Workshop, Tuxtla Gutiérrez.">Cartel en la XXXIV Reunión Anual de la División de Gravitación y Física Matemática de la Sociedad Mexicana de Física —seleccionado entre los mejores pósters de investigación— y en el XVI Taller de la DGFM, Tuxtla Gutiérrez.</p>
+          <div class="card-links">
+            <a class="link" href="https://github.com/magdielzz/PINNs" target="_blank" rel="noopener" data-en="Code ↗">Código ↗</a>
+            <a class="link" href="docs/constancia-dgfm-xxxiv-2026.pdf" target="_blank" rel="noopener" data-en="Certificate (PDF)">Constancia (PDF)</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="year">2025</div>
+        <div>
+          <div class="top" style="display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;align-items:flex-start">
+            <h3 data-en="Machine learning analysis of sleep disorders">Análisis de trastornos del sueño con aprendizaje automático</h3>
+            <span class="status review" data-en="In preparation">En preparación</span>
+          </div>
+          <p class="authors"><b>M. J. Angel Galván</b></p>
+          <p class="venue" data-en="A full analysis of sleep disorders with machine-learning techniques: exploratory analysis, segmentation and classification models over clinical and lifestyle variables.">Análisis integral de trastornos del sueño con técnicas de aprendizaje automático: análisis exploratorio, segmentación y modelos de clasificación sobre variables clínicas y de estilo de vida.</p>
+          <div class="card-links">
+            <a class="link" href="https://github.com/magdielzz/An-lisis-trastornos-sue-o" target="_blank" rel="noopener" data-en="Code ↗">Código ↗</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="proyectos" data-reveal>
+      <div class="sec-head">
+        <span class="sec-tag" data-en="Code">Proyectos</span>
+        <h2 data-en="Open repositories">Repositorios abiertos</h2>
+        <span class="sec-rule"></span>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <h3>Navier–Stokes Parallel Solver</h3>
+          <p data-en="2D Navier–Stokes in vorticity form solved with a pseudo-spectral method and a parallel computing approach.">Navier–Stokes en 2D en forma de vorticidad, resuelto con un método pseudo-espectral y un enfoque de cómputo paralelo.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">FFT</span><span class="tag">Paralelo</span></div>
+          <div class="card-links"><a class="link" href="https://github.com/magdielzz/Navier-Stokes-Parallel-Solver" target="_blank" rel="noopener">github.com/magdielzz ↗</a></div>
+        </article>
+        <article class="card">
+          <h3>PINNs</h3>
+          <p data-en="Physics-informed neural networks: implementations that embed physical laws in training to solve differential equations.">Redes neuronales informadas por la física: implementaciones que incorporan las leyes físicas al entrenamiento para resolver ecuaciones diferenciales.</p>
+          <div class="tags"><span class="tag">TensorFlow</span><span class="tag">EDP</span><span class="tag">HPC</span></div>
+          <div class="card-links"><a class="link" href="https://github.com/magdielzz/PINNs" target="_blank" rel="noopener">github.com/magdielzz ↗</a></div>
+        </article>
+        <article class="card">
+          <h3 data-en="Data science for biomedicine">Ciencia de datos en biomedicina</h3>
+          <p data-en="Length of hospital stay as an indicator of diagnostic and treatment delay in Mexico.">Duración de la estancia hospitalaria como indicador de retrasos en el diagnóstico y el tratamiento en México.</p>
+          <div class="tags"><span class="tag">Pandas</span><span class="tag">EDA</span><span class="tag">Salud</span></div>
+          <div class="card-links"><a class="link" href="https://github.com/magdielzz/Proyecto-ciencia-de-Datos-Biomedicina" target="_blank" rel="noopener">github.com/magdielzz ↗</a></div>
+        </article>
+        <article class="card">
+          <h3 data-en="Sleep disorders">Trastornos del sueño</h3>
+          <p data-en="Comprehensive analysis of sleep disorders with machine learning: segmentation, classification and model comparison.">Análisis integral de trastornos del sueño con aprendizaje automático: segmentación, clasificación y comparación de modelos.</p>
+          <div class="tags"><span class="tag">Scikit-learn</span><span class="tag">Clasificación</span></div>
+          <div class="card-links"><a class="link" href="https://github.com/magdielzz/An-lisis-trastornos-sue-o" target="_blank" rel="noopener">github.com/magdielzz ↗</a></div>
+        </article>
+        <article class="card">
+          <h3 data-en="Galaxy classification">Clasificación de galaxias</h3>
+          <p data-en="Convolutional networks that identify tidal structures in galaxy images.">Redes convolucionales que identifican estructuras de marea en imágenes de galaxias.</p>
+          <div class="tags"><span class="tag">CNN</span><span class="tag">Keras</span><span class="tag">Astrofísica</span></div>
+          <div class="card-links"><a class="link" href="https://github.com/magdielzz/Clasificaci-n-de-galaxias-con-estructura-de-marea-y-sin-estructura-de-marea" target="_blank" rel="noopener">github.com/magdielzz ↗</a></div>
+        </article>
+        <article class="card" style="display:flex;flex-direction:column;justify-content:center;background:var(--accent-soft);border-color:var(--accent)">
+          <h3 data-en="Everything else">Todo lo demás</h3>
+          <p data-en="Notebooks, numerical experiments and course material live in the same profile.">Cuadernos, experimentos numéricos y material de cursos viven en el mismo perfil.</p>
+          <div class="card-links"><a class="link" href="https://github.com/magdielzz" target="_blank" rel="noopener" data-en="See the GitHub profile ↗">Ver el perfil de GitHub ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experiencia" data-reveal>
+      <div class="sec-head">
+        <span class="sec-tag" data-en="Experience">Experiencia</span>
+        <h2 data-en="Professional and academic track">Trayectoria profesional y académica</h2>
+        <span class="sec-rule"></span>
+      </div>
+      <div class="timeline">
+
+        <article class="tl">
+          <div class="when" data-en="2026 — present">2026 — Actualidad</div>
+          <div>
+            <h3 data-en="Business Specialist Data Analyst">Business Specialist Analyst Data</h3>
+            <p class="org" data-en="Orion Innovation · El Palacio de Hierro account">Orion Innovation · cuenta El Palacio de Hierro</p>
+            <ul>
+              <li data-en="Exploratory data analysis to surface consumption patterns and business opportunities across physical stores and e-commerce.">Análisis exploratorio de datos para identificar patrones de consumo y oportunidades de negocio en tienda física y comercio electrónico.</li>
+              <li data-en="Analytical models — clustering, forecasting and curve analysis — supporting strategic decisions, including a product-to-store allocation model that maximises sales while reducing stagnant inventory and SKU stock-outs.">Modelos analíticos de clustering, forecasting y análisis de curvas para decisiones estratégicas, incluido un modelo de asignación de producto a tienda que maximiza la venta y reduce inventario estancado y faltantes de SKU.</li>
+              <li data-en="Git repositories that deploy automatically to Looker for recurring reporting with no manual step, plus interactive Tableau dashboards for key indicators.">Repositorios en Git que se despliegan automáticamente a Looker para reportes recurrentes sin intervención manual, y tableros interactivos en Tableau para indicadores clave.</li>
+              <li data-en="Automation with Python, AWS, Docker and Google Cloud Run, and work on an actionables agent for the Marketing area.">Automatizaciones con Python, AWS, Docker y Google Cloud Run, y participación en un agente de accionables para el área de Mercadeo.</li>
+              <li data-en="Coordination and process planning for projects in the Content and Commercial areas with multidisciplinary teams.">Coordinación y planeación de procesos de trabajo en proyectos de Contenido y Comercial con equipos multidisciplinarios.</li>
+            </ul>
+            <div class="card-links"><a class="link" href="https://www.acreditta.com/credential/d39ebec4-7592-4351-9e7c-9a6155a5eda8?utm_source=copy&amp;resource_type=badge&amp;resource=d39ebec4-7592-4351-9e7c-9a6155a5eda8" target="_blank" rel="noopener" data-en="Verified credential on Acreditta ↗">Credencial verificada en Acreditta ↗</a></div>
+          </div>
+        </article>
+
+        <article class="tl">
+          <div class="when">2025 — 2026</div>
+          <div>
+            <h3 data-en="Data Analyst">Data Analyst</h3>
+            <p class="org">Publicis Groupe</p>
+            <ul>
+              <li data-en="Strategic reporting for Ferrero: performance of chocolate, breakfast and children's brands through social metrics, consumption trends and historical comparisons.">Reportes estratégicos para Ferrero: desempeño de marcas de chocolates, desayunos y productos infantiles mediante métricas de redes sociales, tendencias de consumo y comparativos históricos.</li>
+              <li data-en="Advertising-investment analysis for Banco Azteca — impressions, creatives, media, geographic coverage and competitor strategy — with data-driven recommendations on budget allocation.">Análisis de inversión publicitaria para Banco Azteca: impresiones, creativos, medios, cobertura geográfica y estrategias de competidores, con recomendaciones basadas en datos para distribuir el presupuesto.</li>
+              <li data-en="Python (Pandas) and Excel automation for recurring reports, plus ETL pipelines for extraction, cleaning and transformation with basic SQL.">Automatización en Python (Pandas) y Excel para reportes recurrentes, y procesos ETL de extracción, limpieza y transformación con SQL básico.</li>
+              <li data-en="Audience studies with GWI, TGI and Epsilon ID Modeler, and consumer segmentation through clustering with Scikit-learn.">Estudios de audiencias con GWI, TGI y Epsilon ID Modeler, y segmentación de consumidores mediante clustering con Scikit-learn.</li>
+              <li data-en="Executive dashboards in Excel and Power BI for FarmaMédica, and market research with Pulsar, Euromonitor, Admetricks and Auditsa.">Tableros ejecutivos en Excel y Power BI para FarmaMédica, e investigación de mercado con Pulsar, Euromonitor, Admetricks y Auditsa.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl">
+          <div class="when">2025 — 2026</div>
+          <div>
+            <h3 data-en="Teaching Assistant, Data Science and AI">Ayudante de profesor de Ciencia de Datos e IA</h3>
+            <p class="org" data-en="Facultad de Ciencias, UNAM">Facultad de Ciencias, UNAM</p>
+            <ul>
+              <li data-en="Two consecutive semesters with in-person groups of around 40 students.">Dos semestres consecutivos con grupos presenciales de alrededor de 40 estudiantes.</li>
+              <li data-en="Technical support in Python programming and debugging over real and synthetic datasets.">Asistencia técnica en programación y depuración de código en Python con conjuntos de datos reales y sintéticos.</li>
+              <li data-en="Teaching support on core machine-learning algorithms: clustering, linear and logistic regression, classification models.">Apoyo docente en algoritmos esenciales de aprendizaje automático: clustering, regresión lineal y logística, modelos de clasificación.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl">
+          <div class="when" data-en="2025 — present">2025 — Actualidad</div>
+          <div>
+            <h3 data-en="PINN research and development">Investigación y desarrollo de PINNs</h3>
+            <p class="org" data-en="Facultad de Ciencias, UNAM · ICN cluster">Facultad de Ciencias, UNAM · Clúster del ICN</p>
+            <ul>
+              <li data-en="Physics-informed neural networks for complex partial differential equations.">Redes neuronales informadas por la física para ecuaciones diferenciales parciales complejas.</li>
+              <li data-en="Simulations and model training on the Institute for Nuclear Sciences cluster, with Linux and high-performance computing tooling.">Simulaciones y entrenamiento de modelos en el clúster del Instituto de Ciencias Nucleares, con Linux y herramientas de cómputo de alto rendimiento.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl">
+          <div class="when">2023 — 2025</div>
+          <div>
+            <h3 data-en="Computational physics">Aplicación de física computacional</h3>
+            <p class="org" data-en="Facultad de Ciencias, UNAM">Facultad de Ciencias, UNAM</p>
+            <ul>
+              <li data-en="Numerical solver for the Navier–Stokes equations in vorticity–scalar formulation with pseudo-spectral methods in 2D and 3D.">Solucionador numérico de las ecuaciones de Navier–Stokes en formulación vorticidad-escalar con métodos pseudo-espectrales en 2D y 3D.</li>
+              <li data-en="Implementation in Python with NumPy, SciPy and TensorFlow, optimised by parallelising the Fourier transforms.">Implementación en Python con NumPy, SciPy y TensorFlow, optimizada al paralelizar las transformadas de Fourier.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl">
+          <div class="when">2025</div>
+          <div>
+            <h3 data-en="Collaborator on entrepreneurial projects">Colaborador en proyectos emprendedores</h3>
+            <p class="org" data-en="Entrepreneurship seminar, Facultad de Ciencias">Seminario de emprendimiento, Facultad de Ciencias</p>
+            <ul>
+              <li data-en="Early-stage technology project in a multidisciplinary team, with predictive analysis and statistical modelling in Python.">Proyecto tecnológico en etapa inicial dentro de un equipo multidisciplinario, con análisis predictivo y modelado estadístico en Python.</li>
+              <li data-en="Decision trees, random forests and XGBoost for classification and regression, K-Means and K-NN, and a TensorFlow/Keras network for malignant-tumour prediction from medical images.">Árboles de decisión, bosques aleatorios y XGBoost para clasificación y regresión, K-Means y K-NN, y una red en TensorFlow/Keras para predicción de tumores malignos a partir de imágenes médicas.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="congresos" data-reveal>
+      <div class="sec-head">
+        <span class="sec-tag" data-en="Conferences">Congresos</span>
+        <h2 data-en="Conferences, posters and credentials">Congresos, carteles y credenciales</h2>
+        <span class="sec-rule"></span>
+      </div>
+      <div class="grid two">
+
+        <article class="card">
+          <div class="meta" style="margin-bottom:10px"><span class="status done" data-en="Awarded poster">Póster galardonado</span><span data-en="May 2026">Mayo 2026</span></div>
+          <h3 data-en="XXXIV Annual Meeting of the DGFM — Mexican Physical Society">XXXIV Reunión Anual de la DGFM — Sociedad Mexicana de Física</h3>
+          <p data-en="ESFM-IPN and the Physics Department at Cinvestav, Mexico City, 7–8 May 2026. Poster on multi-periodic dynamics in nonlinear differential equations with PINNs, selected among the best research posters of the meeting.">ESFM-IPN y Departamento de Física del Cinvestav, Ciudad de México, 7 y 8 de mayo de 2026. Cartel sobre dinámica multi-periódica en ecuaciones diferenciales no lineales con PINNs, seleccionado entre los mejores pósters de investigación de la reunión.</p>
+          <div class="card-links"><a class="link" href="docs/constancia-dgfm-xxxiv-2026.pdf" target="_blank" rel="noopener" data-en="Certificate (PDF)">Constancia (PDF)</a></div>
+        </article>
+
+        <article class="card">
+          <div class="meta" style="margin-bottom:10px"><span class="status work" data-en="Poster">Cartel</span><span data-en="November 2026">Noviembre 2026</span></div>
+          <h3 data-en="XVI Workshop of the DGFM — Mexican Physical Society">XVI Taller de la DGFM — Sociedad Mexicana de Física</h3>
+          <p data-en="Tuxtla Gutiérrez, Chiapas, 9–13 November 2026. Poster: «A study of physics-informed neural networks for long-time multi-periodic dynamics in nonlinear differential equations».">Tuxtla Gutiérrez, Chiapas, del 9 al 13 de noviembre de 2026. Cartel: «Estudio de redes neuronales informadas por la física para la dinámica multi-periódica de largo tiempo en ecuaciones diferenciales no lineales».</p>
+          <div class="card-links"><a class="link" href="docs/constancia-xvi-taller-dgfm-2026.pdf" target="_blank" rel="noopener" data-en="Certificate (PDF)">Constancia (PDF)</a></div>
+        </article>
+
+        <article class="card">
+          <div class="meta" style="margin-bottom:10px"><span class="status work" data-en="Free paper">Trabajo libre</span><span data-en="March 2026">Marzo 2026</span></div>
+          <h3 data-en="2nd Congress on Science, Technology and Outreach: Innovation for Health">2° Congreso de Ciencia, Tecnología y Vinculación: Innovación para la Salud</h3>
+          <p data-en="Hospital General de México «Dr. Eduardo Liceaga», 11–13 March 2026. Free paper: «Analysis of prolonged hospital stays in Mexico with data science», with David Alexis García Espinosa.">Hospital General de México «Dr. Eduardo Liceaga», del 11 al 13 de marzo de 2026. Trabajo libre: «Análisis de estancias hospitalarias prolongadas para México con ciencia de datos», con David Alexis García Espinosa.</p>
+          <div class="card-links"><a class="link" href="docs/constancia-congreso-salud-2026.pdf" target="_blank" rel="noopener" data-en="Certificate (PDF)">Constancia (PDF)</a></div>
+        </article>
+
+        <article class="card">
+          <div class="meta" style="margin-bottom:10px"><span class="status done" data-en="Verified credential">Credencial verificada</span><span data-en="August 2026">Agosto 2026</span></div>
+          <h3 data-en="Evenplan Scholars Programme — Orion Innovation">Programa de Becarios Evenplan — Orion Innovation</h3>
+          <p data-en="Credential issued on 11 August 2026 and verifiable on Acreditta, linked to my work on the El Palacio de Hierro account.">Credencial emitida el 11 de agosto de 2026 y verificable en Acreditta, ligada a mi trabajo en la cuenta de El Palacio de Hierro.</p>
+          <div class="card-links">
+            <a class="link" href="https://www.acreditta.com/credential/d39ebec4-7592-4351-9e7c-9a6155a5eda8?utm_source=copy&amp;resource_type=badge&amp;resource=d39ebec4-7592-4351-9e7c-9a6155a5eda8" target="_blank" rel="noopener" data-en="Verify on Acreditta ↗">Verificar en Acreditta ↗</a>
+            <a class="link" href="docs/credencial-orion-evenplan.pdf" target="_blank" rel="noopener" data-en="Credential (PDF)">Credencial (PDF)</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="formacion" data-reveal>
+      <div class="sec-head">
+        <span class="sec-tag" data-en="Education">Formación</span>
+        <h2 data-en="Education">Estudios</h2>
+        <span class="sec-rule"></span>
+      </div>
+      <div class="timeline">
+        <article class="tl">
+          <div class="when">2022 — 2026</div>
+          <div>
+            <h3 data-en="BSc in Physics — degree conferred">Licenciatura en Física — titulado</h3>
+            <p class="org" data-en="Facultad de Ciencias, UNAM · Mexico City">Facultad de Ciencias, UNAM · Ciudad de México</p>
+            <ul>
+              <li data-en="Relevant coursework: computational physics, advanced mathematics, data science.">Cursos relevantes: física computacional, matemáticas avanzadas, ciencia de datos.</li>
+              <li data-en="Thesis on physics-informed neural networks for long-time multi-periodic dynamics.">Tesis sobre redes neuronales informadas por la física para dinámica multiperiódica de largo tiempo.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="tl">
+          <div class="when">2019 — 2022</div>
+          <div>
+            <h3 data-en="High school and Technical degree in Software and Computer Systems Development">Bachillerato y Técnico en Desarrollo de Software y Sistemas Computacionales</h3>
+            <p class="org" data-en="Colegio de Ciencias y Humanidades, Azcapotzalco campus, UNAM">Colegio de Ciencias y Humanidades, Plantel Azcapotzalco, UNAM</p>
+            <ul>
+              <li data-en="Programming and software development with a hands-on focus, with applied projects.">Formación en programación y desarrollo de software con enfoque práctico y proyectos aplicados.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="grid two" style="margin-top:20px">
+        <article class="card">
+          <h3 data-en="Languages">Idiomas</h3>
+          <p><span data-en="Spanish — native · English — intermediate">Español — nativo · Inglés — intermedio</span></p>
+        </article>
+        <article class="card">
+          <h3 data-en="Computing environments">Entornos de cómputo</h3>
+          <p data-en="ICN-UNAM cluster (Linux, HPC), AWS, Google Cloud Run, Docker.">Clúster del ICN-UNAM (Linux, HPC), AWS, Google Cloud Run, Docker.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="habilidades" data-reveal>
+      <div class="sec-head">
+        <span class="sec-tag" data-en="Skills">Habilidades</span>
+        <h2 data-en="Tools and methods">Herramientas y métodos</h2>
+        <span class="sec-rule"></span>
+      </div>
+      <div class="skills">
+        <div class="skillrow">
+          <h3 data-en="Languages">Lenguajes</h3>
+          <div class="chips"><span class="chip">Python</span><span class="chip">C</span><span class="chip">Java</span><span class="chip">R</span><span class="chip">SQL</span><span class="chip">LaTeX</span></div>
+        </div>
+        <div class="skillrow">
+          <h3 data-en="Scientific computing">Cómputo científico</h3>
+          <div class="chips"><span class="chip">NumPy</span><span class="chip">SciPy</span><span class="chip">TensorFlow / Keras</span><span class="chip">Matplotlib</span><span class="chip" data-en="Spectral methods">Métodos espectrales</span><span class="chip">FFT</span><span class="chip" data-en="Parallel computing">Cómputo paralelo</span><span class="chip">Linux · HPC</span></div>
+        </div>
+        <div class="skillrow">
+          <h3 data-en="Machine learning">Aprendizaje automático</h3>
+          <div class="chips"><span class="chip">PINNs</span><span class="chip">CNN</span><span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">Clustering · K-Means</span><span class="chip" data-en="Regression and classification">Regresión y clasificación</span><span class="chip">Forecasting</span></div>
+        </div>
+        <div class="skillrow">
+          <h3 data-en="Data and BI">Datos y BI</h3>
+          <div class="chips"><span class="chip">Pandas</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Looker</span><span class="chip">Excel <span data-en="advanced">avanzado</span></span><span class="chip">ETL</span><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">AWS</span><span class="chip">Google Cloud Run</span></div>
+        </div>
+        <div class="skillrow">
+          <h3 data-en="Market research">Investigación de mercado</h3>
+          <div class="chips"><span class="chip">GWI</span><span class="chip">TGI</span><span class="chip">Epsilon ID Modeler</span><span class="chip">Pulsar</span><span class="chip">Euromonitor</span><span class="chip">Admetricks</span><span class="chip">Auditsa</span><span class="chip">HR Media</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" data-reveal>
+      <div class="sec-head">
+        <span class="sec-tag" data-en="Contact">Contacto</span>
+        <h2 data-en="Get in touch">Escríbeme</h2>
+        <span class="sec-rule"></span>
+      </div>
+      <div class="card">
+        <p class="prose" style="color:var(--muted);font-size:15.5px;margin-bottom:18px" data-en="Open to research collaborations in scientific machine learning, data science projects and teaching.">Abierto a colaboraciones de investigación en aprendizaje automático científico, proyectos de ciencia de datos y docencia.</p>
+        <div class="contact">
+          <div class="cline">
+            <span class="k" data-en="Email">Correo</span>
+            <span class="v"><span id="mail">magdiel50.mag@gmail.com</span><button type="button" class="copy" id="copy-mail" data-en="COPY">COPIAR</button></span>
+          </div>
+          <div class="cline">
+            <span class="k">GitHub</span>
+            <span class="v"><a class="link" href="https://github.com/magdielzz" target="_blank" rel="noopener">github.com/magdielzz ↗</a></span>
+          </div>
+          <div class="cline">
+            <span class="k">LinkedIn</span>
+            <span class="v"><a class="link" href="https://www.linkedin.com/in/magdiel-joshua-angel-galvan-991664345" target="_blank" rel="noopener" data-en="Magdiel Joshua Angel Galván ↗">Magdiel Joshua Angel Galván ↗</a></span>
+          </div>
+          <div class="cline">
+            <span class="k" data-en="Based in">Ubicación</span>
+            <span class="v" data-en="Cuautitlán Izcalli, State of Mexico">Cuautitlán Izcalli, Estado de México</span>
+          </div>
+        </div>
+        <div class="card-links" style="margin-top:20px">
+          <a class="btn primary" href="docs/cv-magdiel-angel-galvan.pdf" target="_blank" rel="noopener" data-en="Download CV (PDF)">Descargar CV (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Magdiel Joshua Angel Galván</p>
+    <p data-en="Built with HTML, CSS and vanilla JavaScript · Last updated November 2026">Hecho con HTML, CSS y JavaScript · Actualizado en noviembre de 2026</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- tema ---------- */
+  var root = document.documentElement;
+  var themeBtn = document.getElementById("theme-btn");
+  function stored(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+  function store(key, value) { try { localStorage.setItem(key, value); } catch (e) { /* sin almacenamiento */ } }
+
+  var savedTheme = stored("mag-theme");
+  if (savedTheme === "dark" || savedTheme === "light") root.setAttribute("data-theme", savedTheme);
+
+  themeBtn.addEventListener("click", function () {
+    var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var current = root.getAttribute("data-theme") || (prefersDark ? "dark" : "light");
+    var next = current === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    store("mag-theme", next);
+    paint();
+  });
+
+  /* ---------- idioma ---------- */
+  var esBtn = document.getElementById("lang-es");
+  var enBtn = document.getElementById("lang-en");
+  var nodes = Array.prototype.slice.call(document.querySelectorAll("[data-en]"));
+  nodes.forEach(function (n) { n.setAttribute("data-es", n.textContent); });
+
+  function setLang(lang) {
+    nodes.forEach(function (n) {
+      n.textContent = lang === "en" ? n.getAttribute("data-en") : n.getAttribute("data-es");
+    });
+    esBtn.setAttribute("aria-pressed", String(lang !== "en"));
+    enBtn.setAttribute("aria-pressed", String(lang === "en"));
+    document.documentElement.lang = lang === "en" ? "en" : "es";
+    store("mag-lang", lang);
+  }
+  esBtn.addEventListener("click", function () { setLang("es"); });
+  enBtn.addEventListener("click", function () { setLang("en"); });
+  if (stored("mag-lang") === "en") setLang("en");
+
+  /* ---------- índice activo ---------- */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
+  if ("IntersectionObserver" in window && sections.length) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        links.forEach(function (a) {
+          a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id);
+        });
+      });
+    }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
+    sections.forEach(function (s) { spy.observe(s); });
+  }
+
+  /* ---------- aparición al desplazar ---------- */
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduced && "IntersectionObserver" in window) {
+    var revealables = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]")).filter(function (el) {
+      return el.getBoundingClientRect().top > window.innerHeight * 0.9;
+    });
+    revealables.forEach(function (el) { el.classList.add("armed"); });
+    var shower = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("armed");
+          shower.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    revealables.forEach(function (el) { shower.observe(el); });
+  }
+
+  /* ---------- copiar correo ---------- */
+  var copyBtn = document.getElementById("copy-mail");
+  copyBtn.addEventListener("click", function () {
+    var text = document.getElementById("mail").textContent;
+    var label = copyBtn.textContent;
+    function done(msg) {
+      copyBtn.textContent = msg;
+      setTimeout(function () { copyBtn.textContent = label; }, 1600);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done("✓"); }, function () { select(); });
+    } else { select(); }
+    function select() {
+      var range = document.createRange();
+      range.selectNodeContents(document.getElementById("mail"));
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      done("↑");
+    }
+  });
+
+  /* ---------- campo de vorticidad del encabezado ----------
+     Partículas arrastradas por un campo de velocidad incompresible
+     obtenido de una función de corriente con unos cuantos modos de Fourier. */
+  var canvas = document.getElementById("field");
+  var ctx = canvas.getContext("2d");
+  var particles = [];
+  var W = 0, H = 0, dpr = 1, raf = null, t = 0;
+
+  var MODES = [
+    { kx: 1.0, ky: 0.7, a: 1.00, p: 0.0 },
+    { kx: -0.6, ky: 1.3, a: 0.70, p: 1.7 },
+    { kx: 1.9, ky: -1.1, a: 0.42, p: 3.1 },
+    { kx: 0.4, ky: 2.2, a: 0.30, p: 5.0 }
+  ];
+  var S = 0.0042; // escala espacial
+
+  function velocity(x, y, time) {
+    // u = dpsi/dy, v = -dpsi/dx  →  campo libre de divergencia
+    var u = 0, v = 0;
+    for (var i = 0; i < MODES.length; i++) {
+      var m = MODES[i];
+      var phase = m.kx * x * S + m.ky * y * S + m.p + time * 0.12;
+      u += m.a * m.ky * Math.cos(phase);
+      v -= m.a * m.kx * Math.cos(phase);
+    }
+    return [u, v];
+  }
+
+  function ink() {
+    var css = getComputedStyle(document.documentElement);
+    return {
+      line: (css.getPropertyValue("--accent") || "#B44A1C").trim(),
+      alt: (css.getPropertyValue("--teal") || "#0F6B62").trim(),
+      dark: (document.documentElement.getAttribute("data-theme") === "dark") ||
+            (!document.documentElement.getAttribute("data-theme") &&
+             window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    };
+  }
+
+  function seed() {
+    particles = [];
+    var count = Math.min(220, Math.round((W * H) / 9000));
+    for (var i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        life: Math.random() * 260,
+        hue: Math.random() < 0.3 ? 1 : 0
+      });
+    }
+  }
+
+  function resize() {
+    var host = canvas.parentElement;
+    if (!host) return;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = host.clientWidth;
+    H = host.clientHeight;
+    canvas.width = Math.max(1, Math.round(W * dpr));
+    canvas.height = Math.max(1, Math.round(H * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    seed();
+    paint();
+  }
+
+  function paint() {
+    var c = ink();
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalAlpha = c.dark ? 0.5 : 0.35;
+    ctx.lineWidth = 1;
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      ctx.strokeStyle = p.hue ? c.alt : c.line;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      var x = p.x, y = p.y;
+      for (var s = 0; s < 7; s++) {
+        var vel = velocity(x, y, t);
+        x += vel[0] * 5.5;
+        y += vel[1] * 5.5;
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function step() {
+    t += 0.016;
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      var vel = velocity(p.x, p.y, t);
+      p.x += vel[0] * 0.65;
+      p.y += vel[1] * 0.65;
+      p.life -= 1;
+      if (p.life <= 0 || p.x < -20 || p.x > W + 20 || p.y < -20 || p.y > H + 20) {
+        p.x = Math.random() * W;
+        p.y = Math.random() * H;
+        p.life = 180 + Math.random() * 220;
+      }
+    }
+    paint();
+    raf = window.requestAnimationFrame(step);
+  }
+
+  resize();
+  window.addEventListener("resize", function () {
+    if (raf) window.cancelAnimationFrame(raf);
+    resize();
+    if (!reduced) raf = window.requestAnimationFrame(step);
+  });
+  if (window.matchMedia) {
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    if (mq.addEventListener) mq.addEventListener("change", paint);
+  }
+  if (!reduced) raf = window.requestAnimationFrame(step);
+})();
+</script>
