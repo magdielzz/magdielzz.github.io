@@ -1,4 +1,4 @@
-# Página personal — Magdiel Joshua Angel Galván
+# Página personal — Magdiel Joshua Angel Galvan
 
 Sitio web personal: investigación en redes neuronales informadas por la física (PINNs),
 tesis de licenciatura, artículos en proceso de publicación, repositorios de código,
@@ -54,4 +54,4 @@ escribe en español dentro del elemento y la versión en inglés en su atributo
 
 ---
 
-© 2026 Magdiel Joshua Angel Galván
+© 2026 Magdiel Joshua Angel Galvan

@@ -1,6 +1,6 @@
-<title>Magdiel Angel Galván</title>
+<title>Magdiel Angel Galvan</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Página personal de Magdiel Joshua Angel Galván: física computacional, redes neuronales informadas por la física (PINNs) y ciencia de datos.">
+<meta name="description" content="Página personal de Magdiel Joshua Angel Galvan: física computacional, redes neuronales informadas por la física (PINNs) y ciencia de datos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
@@ -9,17 +9,15 @@
 /* Layout: índice fijo a la izquierda + una sola columna editorial.
    Paleta: papel grafito frío y tinta, con acento cobre quemado y secundario petróleo. */
 :root{
-  --bg:#EEF1F6;
-  --band:#E4E9F1;
+  --bg:#FFFFFF;
+  --band:#F7F7F7;
   --surface:#FFFFFF;
-  --ink:#0F141D;
-  --muted:#58637A;
-  --line:#D2D9E6;
-  --accent:#B44A1C;
-  --accent-soft:#F6E5DC;
-  --teal:#0F6B62;
-  --brass:#8A6A17;
-  --shadow:0 1px 2px rgba(15,20,29,.05), 0 12px 32px -18px rgba(15,20,29,.35);
+  --ink:#0A0A0A;
+  --muted:#6B6B6B;
+  --line:#E3E3E3;
+  --accent:#8A1A2E;
+  --accent-soft:#F8EFF1;
+  --shadow:0 1px 2px rgba(0,0,0,.04), 0 12px 32px -20px rgba(0,0,0,.30);
   --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
   --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
@@ -27,32 +25,28 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0B0F16;
-    --band:#0F1520;
-    --surface:#141B26;
-    --ink:#E9EEF7;
-    --muted:#95A3BA;
-    --line:#212B3A;
-    --accent:#E8793F;
-    --accent-soft:#2A1A12;
-    --teal:#48BBA9;
-    --brass:#D9B45E;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -22px rgba(0,0,0,.9);
+    --bg:#000000;
+    --band:#070707;
+    --surface:#0D0D0D;
+    --ink:#F4F4F4;
+    --muted:#9B9B9B;
+    --line:#1E1E1E;
+    --accent:#C33A54;
+    --accent-soft:#1A080C;
+    --shadow:0 1px 2px rgba(0,0,0,.6), 0 18px 40px -22px rgba(0,0,0,1);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0B0F16;
-  --band:#0F1520;
-  --surface:#141B26;
-  --ink:#E9EEF7;
-  --muted:#95A3BA;
-  --line:#212B3A;
-  --accent:#E8793F;
-  --accent-soft:#2A1A12;
-  --teal:#48BBA9;
-  --brass:#D9B45E;
-  --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -22px rgba(0,0,0,.9);
+  --bg:#000000;
+  --band:#070707;
+  --surface:#0D0D0D;
+  --ink:#F4F4F4;
+  --muted:#9B9B9B;
+  --line:#1E1E1E;
+  --accent:#C33A54;
+  --accent-soft:#1A080C;
+  --shadow:0 1px 2px rgba(0,0,0,.6), 0 18px 40px -22px rgba(0,0,0,1);
   color-scheme:dark;
 }
 
@@ -126,7 +120,7 @@ img{display:block;max-width:100%}
 .hero{position:relative;overflow:hidden;background:var(--band);border-bottom:1px solid var(--line)}
 #field{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
 .hero .wrap{position:relative;z-index:1;padding-block:clamp(40px,7vw,76px)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:clamp(24px,5vw,56px);align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:clamp(24px,5vw,56px);align-items:center}
 .eyebrow{
   font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:18px;
@@ -143,8 +137,8 @@ img{display:block;max-width:100%}
   border:1px solid var(--line);background:var(--surface);
   padding:6px 11px;border-radius:999px;color:var(--muted);
 }
-.pill.award{border-color:var(--brass);color:var(--brass)}
-.pill.live{border-color:var(--teal);color:var(--teal)}
+.pill.award{border-color:var(--accent);color:var(--accent)}
+.pill.live{border-color:var(--line);color:var(--muted)}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .btn{
   font-family:var(--sans);font-size:14px;font-weight:600;
@@ -160,12 +154,7 @@ img{display:block;max-width:100%}
   position:relative;border-radius:14px;overflow:hidden;
   border:1px solid var(--line);box-shadow:var(--shadow);background:#000;
 }
-.portrait img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.92) contrast(1.04)}
-.portrait::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(170deg,transparent 55%,color-mix(in srgb,var(--accent) 28%, transparent));
-  mix-blend-mode:multiply;
-}
+.portrait img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 16%;filter:grayscale(.12) contrast(1.04)}
 .portrait-cap{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted);margin-top:10px;text-align:right;
@@ -213,9 +202,9 @@ section{scroll-margin-top:calc(env(safe-area-inset-top, 0px) + 84px)}
   font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
   padding:3px 9px;border-radius:999px;border:1px solid currentColor;flex:0 0 auto;
 }
-.status.work{color:var(--teal)}
+.status.work{color:var(--muted)}
 .status.review{color:var(--accent)}
-.status.done{color:var(--brass)}
+.status.done{color:var(--accent)}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .tag{
   font-family:var(--mono);font-size:10.5px;color:var(--muted);
@@ -314,7 +303,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
   .shell{grid-template-columns:minmax(0,1fr)}
   .rail{display:none}
   .hero-grid{grid-template-columns:minmax(0,1fr)}
-  .portrait{max-width:220px}
+  .portrait{max-width:200px}
   .thesis-body{grid-template-columns:minmax(0,1fr)}
   .facts{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:18px}
 }
@@ -330,7 +319,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
 
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="#inicio">MAGDIEL ANGEL <span>GALVÁN</span></a>
+    <a class="brand" href="#inicio">MAGDIEL ANGEL <span>GALVAN</span></a>
     <div class="topbar-space"></div>
     <div class="ctrls">
       <div class="seg" role="group" aria-label="Idioma / Language">
@@ -350,7 +339,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
     <div class="hero-grid">
       <div>
         <p class="eyebrow"><span data-en="Physicist · UNAM · Computational modelling">Físico · UNAM · Modelado computacional</span></p>
-        <h1>Magdiel Joshua<br>Angel Galván</h1>
+        <h1>Magdiel Joshua<br>Angel Galvan</h1>
         <p class="lede">
           <span data-en="I work where differential equations meet machine learning: "><b>Trabajo en la frontera entre las ecuaciones diferenciales y el aprendizaje automático:</b></span>
           <span data-en="physics-informed neural networks, pseudo-spectral solvers and data science applied to health and retail.">redes neuronales informadas por la física, solucionadores pseudo-espectrales y ciencia de datos aplicada a salud y retail.</span>
@@ -381,7 +370,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
       </div>
       <div>
         <figure class="portrait" style="margin:0">
-          <img src="assets/magdiel-angel.jpg" alt="Retrato de Magdiel Joshua Angel Galván" width="900" height="1200">
+          <img src="assets/magdiel-angel.jpg" alt="Retrato de Magdiel Joshua Angel Galvan" width="900" height="1200">
         </figure>
         <p class="portrait-cap" data-en="Mexico City · 2026">Ciudad de México · 2026</p>
       </div>
@@ -500,7 +489,6 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
             </div>
             <p data-en="Clustering, forecasting and curve analysis on consumption data, plus a product-to-store allocation model that weighs several factors at once to raise sales, reduce stagnant inventory and cut SKU stock-outs at the highest-demand points of sale. Work carried out at Orion Innovation for El Palacio de Hierro.">Clustering, forecasting y análisis de curvas sobre datos de consumo, y un modelo de asignación de producto a tienda que pondera varios factores a la vez para elevar la venta, reducir inventario estancado y mitigar faltantes de SKU en los puntos de venta de mayor demanda. Trabajo realizado en Orion Innovation para El Palacio de Hierro.</p>
             <div class="tags"><span class="tag">Clustering</span><span class="tag">Forecasting</span><span class="tag">Tableau · Looker</span><span class="tag">AWS · Docker</span></div>
-            <div class="card-links"><a class="link" href="https://www.acreditta.com/credential/d39ebec4-7592-4351-9e7c-9a6155a5eda8?utm_source=copy&amp;resource_type=badge&amp;resource=d39ebec4-7592-4351-9e7c-9a6155a5eda8" target="_blank" rel="noopener" data-en="Verified credential ↗">Credencial verificada ↗</a></div>
           </div>
         </article>
 
@@ -549,7 +537,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
             <h3 data-en="Analysis of prolonged hospital stays in Mexico with data science">Análisis de estancias hospitalarias prolongadas para México con ciencia de datos</h3>
             <span class="status review" data-en="Submitted to journal">En envío a revista</span>
           </div>
-          <p class="authors"><b>M. J. Angel Galván</b>, D. A. García Espinosa</p>
+          <p class="authors"><b>M. J. Angel Galvan</b>, D. A. García Espinosa</p>
           <p class="venue" data-en="Presented as a free paper at the 2nd Congress on Science, Technology and Outreach: Innovation for Health, Hospital General de México «Dr. Eduardo Liceaga», 11–13 March 2026.">Presentado como trabajo libre en el 2° Congreso de Ciencia, Tecnología y Vinculación: Innovación para la Salud, Hospital General de México «Dr. Eduardo Liceaga», 11–13 de marzo de 2026.</p>
           <div class="card-links">
             <a class="link" href="https://github.com/magdielzz/Proyecto-ciencia-de-Datos-Biomedicina" target="_blank" rel="noopener" data-en="Code and analysis ↗">Código y análisis ↗</a>
@@ -565,7 +553,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
             <h3 data-en="A study of physics-informed neural networks for multi-periodic dynamics in nonlinear differential equations">Estudio de redes neuronales informadas por la física para la dinámica multi-periódica en ecuaciones diferenciales no lineales</h3>
             <span class="status review" data-en="In preparation">En preparación</span>
           </div>
-          <p class="authors"><b>M. J. Angel Galván</b></p>
+          <p class="authors"><b>M. J. Angel Galvan</b></p>
           <p class="venue" data-en="Poster at the XXXIV Annual Meeting of the Gravitation and Mathematical Physics Division, Mexican Physical Society (selected among the best research posters), and at the XVI DGFM Workshop, Tuxtla Gutiérrez.">Cartel en la XXXIV Reunión Anual de la División de Gravitación y Física Matemática de la Sociedad Mexicana de Física —seleccionado entre los mejores pósters de investigación— y en el XVI Taller de la DGFM, Tuxtla Gutiérrez.</p>
           <div class="card-links">
             <a class="link" href="https://github.com/magdielzz/PINNs" target="_blank" rel="noopener" data-en="Code ↗">Código ↗</a>
@@ -581,7 +569,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
             <h3 data-en="Machine learning analysis of sleep disorders">Análisis de trastornos del sueño con aprendizaje automático</h3>
             <span class="status review" data-en="In preparation">En preparación</span>
           </div>
-          <p class="authors"><b>M. J. Angel Galván</b></p>
+          <p class="authors"><b>M. J. Angel Galvan</b></p>
           <p class="venue" data-en="A full analysis of sleep disorders with machine-learning techniques: exploratory analysis, segmentation and classification models over clinical and lifestyle variables.">Análisis integral de trastornos del sueño con técnicas de aprendizaje automático: análisis exploratorio, segmentación y modelos de clasificación sobre variables clínicas y de estilo de vida.</p>
           <div class="card-links">
             <a class="link" href="https://github.com/magdielzz/An-lisis-trastornos-sue-o" target="_blank" rel="noopener" data-en="Code ↗">Código ↗</a>
@@ -655,7 +643,6 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
               <li data-en="Automation with Python, AWS, Docker and Google Cloud Run, and work on an actionables agent for the Marketing area.">Automatizaciones con Python, AWS, Docker y Google Cloud Run, y participación en un agente de accionables para el área de Mercadeo.</li>
               <li data-en="Coordination and process planning for projects in the Content and Commercial areas with multidisciplinary teams.">Coordinación y planeación de procesos de trabajo en proyectos de Contenido y Comercial con equipos multidisciplinarios.</li>
             </ul>
-            <div class="card-links"><a class="link" href="https://www.acreditta.com/credential/d39ebec4-7592-4351-9e7c-9a6155a5eda8?utm_source=copy&amp;resource_type=badge&amp;resource=d39ebec4-7592-4351-9e7c-9a6155a5eda8" target="_blank" rel="noopener" data-en="Verified credential on Acreditta ↗">Credencial verificada en Acreditta ↗</a></div>
           </div>
         </article>
 
@@ -671,6 +658,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
               <li data-en="Audience studies with GWI, TGI and Epsilon ID Modeler, and consumer segmentation through clustering with Scikit-learn.">Estudios de audiencias con GWI, TGI y Epsilon ID Modeler, y segmentación de consumidores mediante clustering con Scikit-learn.</li>
               <li data-en="Executive dashboards in Excel and Power BI for FarmaMédica, and market research with Pulsar, Euromonitor, Admetricks and Auditsa.">Tableros ejecutivos en Excel y Power BI para FarmaMédica, e investigación de mercado con Pulsar, Euromonitor, Admetricks y Auditsa.</li>
             </ul>
+            <div class="card-links"><a class="link" href="https://www.acreditta.com/credential/d39ebec4-7592-4351-9e7c-9a6155a5eda8?utm_source=copy&amp;resource_type=badge&amp;resource=d39ebec4-7592-4351-9e7c-9a6155a5eda8" target="_blank" rel="noopener" data-en="Evenplan Scholars Programme — verified credential ↗">Programa de Becarios Evenplan — credencial verificada ↗</a></div>
           </div>
         </article>
 
@@ -757,8 +745,8 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
 
         <article class="card">
           <div class="meta" style="margin-bottom:10px"><span class="status done" data-en="Verified credential">Credencial verificada</span><span data-en="August 2026">Agosto 2026</span></div>
-          <h3 data-en="Evenplan Scholars Programme — Orion Innovation">Programa de Becarios Evenplan — Orion Innovation</h3>
-          <p data-en="Credential issued on 11 August 2026 and verifiable on Acreditta, linked to my work on the El Palacio de Hierro account.">Credencial emitida el 11 de agosto de 2026 y verificable en Acreditta, ligada a mi trabajo en la cuenta de El Palacio de Hierro.</p>
+          <h3 data-en="Evenplan Scholars Programme — Publicis Groupe">Programa de Becarios Evenplan — Publicis Groupe</h3>
+          <p data-en="Credential issued on 11 August 2026 and verifiable on Acreditta: it certifies my work as a scholar in the programme at Publicis Groupe.">Credencial emitida el 11 de agosto de 2026 y verificable en Acreditta: acredita mi trabajo como becario del programa en Publicis Groupe.</p>
           <div class="card-links">
             <a class="link" href="https://www.acreditta.com/credential/d39ebec4-7592-4351-9e7c-9a6155a5eda8?utm_source=copy&amp;resource_type=badge&amp;resource=d39ebec4-7592-4351-9e7c-9a6155a5eda8" target="_blank" rel="noopener" data-en="Verify on Acreditta ↗">Verificar en Acreditta ↗</a>
             <a class="link" href="docs/credencial-orion-evenplan.pdf" target="_blank" rel="noopener" data-en="Credential (PDF)">Credencial (PDF)</a>
@@ -850,7 +838,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
         <div class="contact">
           <div class="cline">
             <span class="k" data-en="Email">Correo</span>
-            <span class="v"><span id="mail">magdiel50.mag@gmail.com</span><button type="button" class="copy" id="copy-mail" data-en="COPY">COPIAR</button></span>
+            <span class="v"><span id="mail">magdiel10.mag@gmail.com</span><button type="button" class="copy" id="copy-mail" data-en="COPY">COPIAR</button></span>
           </div>
           <div class="cline">
             <span class="k">GitHub</span>
@@ -858,7 +846,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
           </div>
           <div class="cline">
             <span class="k">LinkedIn</span>
-            <span class="v"><a class="link" href="https://www.linkedin.com/in/magdiel-joshua-angel-galvan-991664345" target="_blank" rel="noopener" data-en="Magdiel Joshua Angel Galván ↗">Magdiel Joshua Angel Galván ↗</a></span>
+            <span class="v"><a class="link" href="https://www.linkedin.com/in/magdiel-joshua-angel-galvan-991664345" target="_blank" rel="noopener" data-en="Magdiel Joshua Angel Galvan ↗">Magdiel Joshua Angel Galvan ↗</a></span>
           </div>
           <div class="cline">
             <span class="k" data-en="Based in">Ubicación</span>
@@ -876,7 +864,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
 
 <footer>
   <div class="wrap">
-    <p>© 2026 Magdiel Joshua Angel Galván</p>
+    <p>© 2026 Magdiel Joshua Angel Galvan</p>
     <p data-en="Built with HTML, CSS and vanilla JavaScript · Last updated November 2026">Hecho con HTML, CSS y JavaScript · Actualizado en noviembre de 2026</p>
   </div>
 </footer>
@@ -1008,8 +996,7 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
   function ink() {
     var css = getComputedStyle(document.documentElement);
     return {
-      line: (css.getPropertyValue("--accent") || "#B44A1C").trim(),
-      alt: (css.getPropertyValue("--teal") || "#0F6B62").trim(),
+      line: (css.getPropertyValue("--accent") || "#8A1A2E").trim(),
       dark: (document.documentElement.getAttribute("data-theme") === "dark") ||
             (!document.documentElement.getAttribute("data-theme") &&
              window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
@@ -1045,11 +1032,12 @@ footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacin
   function paint() {
     var c = ink();
     ctx.clearRect(0, 0, W, H);
-    ctx.globalAlpha = c.dark ? 0.5 : 0.35;
     ctx.lineWidth = 1;
+    ctx.strokeStyle = c.line;
+    var base = c.dark ? 0.62 : 0.40;
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
-      ctx.strokeStyle = p.hue ? c.alt : c.line;
+      ctx.globalAlpha = p.hue ? base * 0.45 : base;
       ctx.beginPath();
       ctx.moveTo(p.x, p.y);
       var x = p.x, y = p.y;
